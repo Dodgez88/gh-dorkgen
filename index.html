@@ -204,6 +204,7 @@
         .main-flex {
           flex-direction: column;
           gap: 1.2rem;
+          margin: 8vh auto 0 auto;
         }
         .side-panel,
         .results-panel {
@@ -214,13 +215,20 @@
         }
       }
       @media (max-width: 600px) {
+        .main-flex {
+          margin: 5vh auto 0 auto;
+          gap: 1rem;
+        }
         .side-panel,
         .results-panel {
           padding: 0.7em 0.2em 1.1em 0.2em;
           border-radius: 8px;
+          min-width: 98vw;
+          max-width: 98vw;
         }
         h1 {
           font-size: 1.1rem;
+          margin-top: 0.8rem;
         }
         .side-panel label,
         .side-panel input,
@@ -233,8 +241,45 @@
           padding: 0.5rem 0.3rem;
         }
         .actions {
-          flex-direction: column;
-          gap: 0.7rem;
+          display: block !important;
+          visibility: visible !important;
+        }
+      }
+      @media (max-width: 480px) {
+        .main-flex {
+          margin: 3vh auto 0 auto;
+          gap: 0.8rem;
+        }
+        .side-panel, .results-panel {
+          padding: 0.5em 0.1em 0.8em 0.1em;
+          border-radius: 6px;
+          min-width: 96vw;
+          max-width: 96vw;
+        }
+        h1 { 
+          font-size: 1rem; 
+          margin-top: 0.6rem;
+          margin-bottom: 0.6rem;
+        }
+        .side-panel label {
+          font-size: 0.9rem;
+          margin-top: 0.5rem;
+        }
+        .side-panel input, .side-panel textarea {
+          font-size: 0.9rem;
+          padding: 0.4rem;
+          margin-bottom: 0.2rem;
+        }
+        .side-panel textarea {
+          min-height: 120px;
+        }
+        .dork-link {
+          font-size: 0.9rem;
+          padding: 0.4rem 0.2rem;
+        }
+        .side-panel .actions button {
+          font-size: 0.9rem;
+          padding: 0.4rem 1rem;
         }
       }
       /* Force show actions and results */
@@ -345,6 +390,7 @@ Access_token"
       const ctx = canvas.getContext("2d");
       let w = window.innerWidth,
         h = window.innerHeight;
+      
       function resizeGalaxy() {
         w = window.innerWidth;
         h = window.innerHeight;
@@ -369,7 +415,7 @@ Access_token"
         "0 0 8px #4f4fff22, 0 0 16px #00fff022",
         "0 0 8px #4f4fff11, 0 0 16px #4f4fff11",
       ];
-      const PARTICLE_COUNT = Math.floor((w * h) / 7000) + 12; // even fewer particles, more minimal
+      const PARTICLE_COUNT = Math.floor((w * h) / 12000) + 8; // fewer particles for better performance
       const PARTICLE_RADIUS = [1.1, 1.4, 1.7];
       const particles = [];
       for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -464,9 +510,11 @@ Access_token"
       function animateGalaxy() {
         updateGalaxyParticles();
         drawGalaxyParticles();
-        requestAnimationFrame(animateGalaxy);
+        // Throttle animation for better performance
+        setTimeout(() => requestAnimationFrame(animateGalaxy), 16); // ~60fps
       }
-      animateGalaxy();
+      // Static background for all browsers and devices
+      canvas.style.background = 'linear-gradient(45deg, #0a0a0f, #1a1a2e)';
 
       // --- Match side-panel height to results-panel ---
       function matchPanelHeights() {
