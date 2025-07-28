@@ -236,6 +236,10 @@
         .side-panel .actions button {
           font-size: 0.93rem;
         }
+        .side-panel .actions button {
+          padding: 0.3rem 0.6rem;
+          font-size: 0.85rem;
+        }
         .dork-link {
           font-size: 0.95rem;
           padding: 0.5rem 0.3rem;
@@ -250,15 +254,14 @@
           margin: 3vh auto 0 auto;
           gap: 0.8rem;
         }
-        .side-panel,
-        .results-panel {
+        .side-panel, .results-panel {
           padding: 0.5em 0.1em 0.8em 0.1em;
           border-radius: 6px;
           min-width: 96vw;
           max-width: 96vw;
         }
-        h1 {
-          font-size: 1rem;
+        h1 { 
+          font-size: 1rem; 
           margin-top: 0.6rem;
           margin-bottom: 0.6rem;
         }
@@ -266,8 +269,7 @@
           font-size: 0.9rem;
           margin-top: 0.5rem;
         }
-        .side-panel input,
-        .side-panel textarea {
+        .side-panel input, .side-panel textarea {
           font-size: 0.9rem;
           padding: 0.4rem;
           margin-bottom: 0.2rem;
@@ -280,8 +282,9 @@
           padding: 0.4rem 0.2rem;
         }
         .side-panel .actions button {
-          font-size: 0.9rem;
-          padding: 0.4rem 1rem;
+          font-size: 0.8rem;
+          padding: 0.25rem 0.5rem;
+          margin: 0.15rem auto;
         }
       }
       /* Force show actions and results */
@@ -392,7 +395,7 @@ Access_token"
       const ctx = canvas.getContext("2d");
       let w = window.innerWidth,
         h = window.innerHeight;
-
+      
       function resizeGalaxy() {
         w = window.innerWidth;
         h = window.innerHeight;
@@ -516,7 +519,7 @@ Access_token"
         setTimeout(() => requestAnimationFrame(animateGalaxy), 16); // ~60fps
       }
       // Static background for all browsers and devices
-      canvas.style.background = "linear-gradient(45deg, #0a0a0f, #1a1a2e)";
+      canvas.style.background = 'linear-gradient(45deg, #0a0a0f, #1a1a2e)';
 
       // --- Match side-panel height to results-panel ---
       function matchPanelHeights() {
